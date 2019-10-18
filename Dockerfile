@@ -1,11 +1,15 @@
 # base image
-FROM node:12.2.0-alpine
+FROM node:12.2.0-alpine as mmd-app
 
 # select working directory
 WORKDIR /usr/src/app
 
 # Installing dependencies
-COPY package*.json yarn.lock ./
-RUN npm yarn
+COPY . ./
+RUN yarn
+RUN yarn build
 
-COPY . .
+FROM nginx:alpine
+COPY --from=mmd-app /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
