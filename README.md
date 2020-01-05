@@ -7,7 +7,7 @@ The Dockerfile is to be built into an image, stored og Google Container Register
 ### `Active Google Cloud Billing Account`
 ### `Gcloud CLI or SDK`
 ### `docker`
-### `kubernetes clusters'
+### `kubernetes clusters`
 
 ## Available Scripts
 
